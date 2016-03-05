@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc3352.RobotCode2016.commands.*;
 import org.usfirst.frc3352.RobotCode2016.subsystems.*;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -107,6 +108,9 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+		Robot.oi.resetGyroTrigger.setPressed(RobotMap.shooterLimit.get());
+        SmartDashboard.putBoolean("gyroTrigger", Robot.oi.resetGyroTrigger.get());
+        SmartDashboard.putNumber("angle", Robot.shooter.getAngle());
     }
 
     /**
