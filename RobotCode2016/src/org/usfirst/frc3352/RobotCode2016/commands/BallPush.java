@@ -2,14 +2,15 @@ package org.usfirst.frc3352.RobotCode2016.commands;
 
 import org.usfirst.frc3352.RobotCode2016.Robot;
 
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+//import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class BallPush extends Command {
-
+	
+	int i;
     public BallPush() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -23,18 +24,21 @@ public class BallPush extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    
-    	
+    	i++;
+    	if(i==50){
+    		Robot.shooterpneumatics.pull();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (i==75);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooterpneumatics.pull();
+    	Robot.shooterpneumatics.stop();
+    	i=0;
     }
 
     // Called when another command which requires one or more of the same

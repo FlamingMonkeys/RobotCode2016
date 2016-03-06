@@ -109,17 +109,13 @@ public class OI {
 		return driveJoy.getRawAxis(1);
 		
 	}
-	public double getTarge()
-	{
-		
-	}
 	public double getTurnVal() {
 		//* Returns a value from -1 to 1 representing turn speed; 1 represents full right
 		return -driveJoy.getRawAxis(4);
 		
 	}
 	
-	public double getAngle() {
+	public double getTarget() {
 		return operatorJoy.getRawAxis(1);
 	}
 
