@@ -66,7 +66,7 @@ public class Shooter extends PIDSubsystem {
     	shooter2.set(speed);
     }
     public void setAngle(double angle){
-    	this.angle.set(angle);
+    	this.angle.set(-angle); //invert to correct direction
     }
 
     public double getAngle(){

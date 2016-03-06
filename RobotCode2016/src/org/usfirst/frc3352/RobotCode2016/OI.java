@@ -116,7 +116,7 @@ public class OI {
 	}
 	
 	public double getTarget() {
-		return operatorJoy.getRawAxis(1);
+		return -operatorJoy.getRawAxis(1); //invert so positive value goes up
 	}
 
 }
