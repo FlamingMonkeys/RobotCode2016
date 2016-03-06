@@ -12,6 +12,8 @@
 package org.usfirst.frc3352.RobotCode2016.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc3352.RobotCode2016.Robot;
 
 /**
@@ -45,16 +47,32 @@ public class Angle extends Command {
     protected void execute() {
     	
     	double target = Robot.oi.getTarget();
-    	if(Math.abs(target)<.3){
+    	SmartDashboard.putNumber("angle speed", target);
+    	
+    	//deadband
+    	if(Math.abs(target)<.1){
     		target = 0;
     	}
-    	if(target>0){
-    		target = target * .6;
-    	}else{
-    		target = target * 6;
+    	
+    	//ensure full output
+    	if(target>.95){
+    		target = 1;
     	}
     	
+    	//scale value to prevent moving too fast
+    	if(target>0){
+    		target = target * .6; //more power for up direction
+    	}else{
+    		target = target * .3; //less power for down direction
+    	}
+    	
+    	
     	Robot.shooter.setAngle(target);
+    	
+    	/*double target = Robot.oi.getTarget(); //get target angle based on joystick position
+    	target = (target+1)*45; //normalize from (-1 to 1) joystick range to (0 to 90) shooter angle range
+    	Robot.shooter.setSetpoint(target);*/
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
