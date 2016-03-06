@@ -1,6 +1,0 @@
-INDEX VERSION 1.127+C:\Users\Lon\git\RobotCode2016\.metadata\.plugins\org.eclipse.jdt.core
-1499247486.index
-1872635559.index
-96189195.index
-447738122.index
-4167354207.index
