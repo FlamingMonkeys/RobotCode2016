@@ -40,7 +40,8 @@ public class Shooter extends PIDSubsystem {
     						   INTAKE =  0;
     
     public Shooter(){
-    	super("Shooter",1.0,0.0,0.0);
+    	//TODO tune PID loop
+    	super("Shooter",.011,0.0,0.0);
     	setAbsoluteTolerance(10);
     	getPIDController().setContinuous(false);
     	LiveWindow.addActuator("Shooter", "PID Subsytem Controller", getPIDController());

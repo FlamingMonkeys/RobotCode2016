@@ -47,7 +47,7 @@ public class Angle extends Command {
     	if(Math.abs(target)<.1){
     		target = 0;
     	}
-    	
+    	//TODO test fast-start code
     	if(target>0){
     		Robot.shooter.setAngle(1);
     	}else if(target<0){

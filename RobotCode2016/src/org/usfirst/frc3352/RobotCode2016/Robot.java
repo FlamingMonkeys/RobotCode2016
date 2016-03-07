@@ -51,6 +51,7 @@ public class Robot extends IterativeRobot {
         shooter = new Shooter();
         shooterpneumatics = new ShooterPneumatics();
         
+        //TODO implement vision code
         server = CameraServer.getInstance();
         server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
