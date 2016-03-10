@@ -122,6 +122,10 @@ public class OI {
 	public double getTarget() {
 		return -operatorJoy.getRawAxis(1); //invert so positive value goes up
 	}
+	
+	public boolean getOverride(){
+		return operatorJoy.getRawButton(6);//true overrides limit switches
+	}
 
 }
 

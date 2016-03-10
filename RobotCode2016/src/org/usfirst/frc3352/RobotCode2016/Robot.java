@@ -12,6 +12,7 @@
 package org.usfirst.frc3352.RobotCode2016;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -36,6 +37,7 @@ public class Robot extends IterativeRobot {
     public static Drivetrain drivetrain;
     public static Shooter shooter;
     public static Shooter shooter2;
+    public static PowerDistributionPanel pdp;
     
     public static ShooterPneumatics shooterpneumatics;
     
@@ -54,6 +56,7 @@ public class Robot extends IterativeRobot {
         shooter = new Shooter();
         //shooter2 = new Shooter();
         shooterpneumatics = new ShooterPneumatics();
+        pdp = new PowerDistributionPanel();
         
         gearshift = new GearShifter();
         
@@ -115,9 +118,10 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-		Robot.oi.resetGyroTrigger.setPressed(RobotMap.shooterLimit.get());
+		Robot.oi.resetGyroTrigger.setPressed(RobotMap.shooterUpperLimit.get());
         SmartDashboard.putBoolean("gyroTrigger", Robot.oi.resetGyroTrigger.get());
         SmartDashboard.putNumber("angle", Robot.shooter.getAngle());
+        SmartDashboard.putNumber("current", pdp.getCurrent(3));
     }
 
     /**
