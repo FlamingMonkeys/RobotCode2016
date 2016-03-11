@@ -41,8 +41,8 @@ public class Shooter extends PIDSubsystem {
     
     public Shooter(){
     	//TODO tune PID loop
-    	super("Shooter",.011,0.0,0.0);
-    	setAbsoluteTolerance(10);
+    	super("Shooter",1,0.0,0.0);
+    	setAbsoluteTolerance(.05);
     	getPIDController().setContinuous(false);
     	LiveWindow.addActuator("Shooter", "PID Subsytem Controller", getPIDController());
     	
@@ -83,7 +83,7 @@ public class Shooter extends PIDSubsystem {
     
 	@Override
 	protected double returnPIDInput() {
-		return gyro.getAngle();
+		return gyro.getAngle()/90;
 	}
 
 

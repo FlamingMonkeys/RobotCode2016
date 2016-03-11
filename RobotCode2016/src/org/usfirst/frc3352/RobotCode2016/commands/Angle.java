@@ -84,7 +84,7 @@ public class Angle extends Command {
     	
     	//scale value to prevent moving too fast
     	if(target>0){
-    		target = target * .75; //more power for up direction
+    		target = target; //more power for up direction
     	}else{
     		target = target * .3; //less power for down direction
     	}

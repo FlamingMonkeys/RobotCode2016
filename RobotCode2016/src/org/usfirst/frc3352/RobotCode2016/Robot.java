@@ -129,5 +129,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        SmartDashboard.putNumber("current", pdp.getCurrent(3));
     }
 }
