@@ -84,7 +84,7 @@ public class Angle extends Command {
     	
     	//scale value to prevent moving too fast
     	if(target>0){
-    		target = target; //more power for up direction
+    		target = target * 1; //more power for up direction
     	}else{
     		target = target * .3; //less power for down direction
     	}
@@ -105,12 +105,14 @@ public class Angle extends Command {
     		}
     	}
     	
+    	
+    	
     	SmartDashboard.putNumber("angle speed", target);
     	Robot.shooter.setAngle(target);
     	lastTarget = target;
     	/*
     	double target = Robot.oi.getTarget(); //get target angle based on joystick position
-    	target = (target+1)*45; //normalize from (-1 to 1) joystick range to (0 to 90) shooter angle range
+    	target = (target+1)/2; //normalize from (-1 to 1) joystick range to (0 to 1) shooter angle range
     	Robot.shooter.setSetpoint(target);
     	*/
     	

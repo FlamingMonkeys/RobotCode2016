@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="C:/Users/Lon/wpilib/java/current/lib/NetworkTables-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Lon/wpilib/java/current/lib/WPILib.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Lon/wpilib/java/current/lib/WPILib-sources.jar"/>
+	<classpathentry kind="var" path="navx-mxp"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
