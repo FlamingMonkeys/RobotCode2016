@@ -41,7 +41,7 @@ public class Shooter extends PIDSubsystem {
     
     public Shooter(){
     	//TODO tune PID loop
-    	super("Shooter",1,0.0,0.0);
+    	super("Shooter",1.5,.02,0.0,0.0);
     	setAbsoluteTolerance(.05);
     	getPIDController().setContinuous(false);
     	LiveWindow.addActuator("Shooter", "PID Subsytem Controller", getPIDController());
@@ -70,7 +70,7 @@ public class Shooter extends PIDSubsystem {
     	shooter2.set(speed);
     }
     public void setAngle(double angle){
-    	this.angle.set(-angle); //invert to correct direction
+    	this.angle.set(angle); //invert to correct direction on practice bot
     }
 
     public double getAngle(){
