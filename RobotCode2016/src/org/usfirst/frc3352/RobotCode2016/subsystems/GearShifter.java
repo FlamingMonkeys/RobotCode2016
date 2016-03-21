@@ -17,12 +17,12 @@ public class GearShifter extends Subsystem {
 	
 	public void ShiftUp()
 	{
-		Shifter.set(Value.kForward);
+		Shifter.set(Value.kReverse);
 	}
 	
 	public void ShiftDown()
 	{
-		Shifter.set(Value.kReverse);
+		Shifter.set(Value.kForward);
 	}
 	
 	public Value ShiftState()

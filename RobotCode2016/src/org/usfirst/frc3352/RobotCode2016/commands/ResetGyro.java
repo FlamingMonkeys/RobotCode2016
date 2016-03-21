@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ResetGyro extends Command {
 
-	int i;
+	int i=0;
     public ResetGyro() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -29,7 +29,7 @@ public class ResetGyro extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (i==50);//end after one second (50x20ms loop) has passed
+        return (i==50);//end after two seconds (100x20ms loop) have passed
     }
 
     // Called once after isFinished returns true

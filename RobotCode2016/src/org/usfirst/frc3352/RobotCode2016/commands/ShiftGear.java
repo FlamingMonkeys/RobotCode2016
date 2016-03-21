@@ -26,11 +26,11 @@ public class ShiftGear extends Command {
     {
     	if (Robot.gearshift.ShiftState() == Value.kForward)
     	{
-    		Robot.gearshift.ShiftDown();
+    		Robot.gearshift.ShiftUp();
     	}
     	else
     	{
-    		Robot.gearshift.ShiftUp();
+    		Robot.gearshift.ShiftDown();
     	}
     }
 
