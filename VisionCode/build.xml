@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jar destfile="TowerTracker.jar" basedir="build/classes">
-    <manifest>
-        <attribute name="Main-Class" value="com.src.program"/>
-        <attribute name="Class-path" value="opencv-310.jar"/>
-    </manifest>
-</jar>

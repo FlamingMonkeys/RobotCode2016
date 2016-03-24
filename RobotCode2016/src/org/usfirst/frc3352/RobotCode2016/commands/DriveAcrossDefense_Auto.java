@@ -1,5 +1,7 @@
 package org.usfirst.frc3352.RobotCode2016.commands;
 
+import org.usfirst.frc3352.RobotCode2016.commands.DriveAcrossDefense_Auto.Defense;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -7,7 +9,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class DriveAcrossDefense_Auto extends CommandGroup {
     
-	public enum Defense {LOWBAR, PORTCULLIS, MOAT, DRAWBRIDGE, ROCKWALL, ROUGH, CHEVAL, SALLY, RAMPART}
+	public enum Defense {LOWBAR, MOAT, ROCKWALL, ROUGH, RAMPART, CHEVAL, PORTCULLIS, DRAWBRIDGE, SALLY}
+	double angle;
 	
     public  DriveAcrossDefense_Auto(Defense defense) {
         // Add Commands here:
@@ -27,8 +30,16 @@ public class DriveAcrossDefense_Auto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new ResetGyro());
-    	if(defense == Defense.LOWBAR) addParallel(new AnglePID(80));
+		if(defense == Defense.MOAT || defense ==  Defense.ROCKWALL || defense == Defense.ROUGH || defense == Defense.RAMPART || defense == Defense.CHEVAL){
+			angle = 0;
+		}else if(defense == Defense.LOWBAR){
+			angle = 80;
+		}
+		addParallel(new AnglePID(angle));
 		addSequential(new DriveToDefense_Auto());
-		addSequential(new DriveToPosition(4,0));
+		if(!(defense == Defense.CHEVAL || defense == Defense.PORTCULLIS || defense == Defense.DRAWBRIDGE || defense == Defense.SALLY)){
+			addParallel(new AngleHold());
+			addSequential(new DriveToPosition(4,0));
+		}
     }
 }
