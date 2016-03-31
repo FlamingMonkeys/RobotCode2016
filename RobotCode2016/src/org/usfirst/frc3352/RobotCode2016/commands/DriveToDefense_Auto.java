@@ -24,6 +24,6 @@ public class DriveToDefense_Auto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveToPosition(3,0));
+    	addSequential(new DriveToPosition(56));
     }
 }

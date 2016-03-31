@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Encoder;
 public class DriveToPosition extends Command {
 
 	double distance;
+	double angle;
 	Encoder encoder;
 	/**
 	 * Drives the robot straight forward a certain distance
@@ -32,18 +33,23 @@ public class DriveToPosition extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	encoder = Robot.drivetrain.rightEncoder;
+    	encoder = Robot.drivetrain.leftEncoder;
     	encoder.reset();
-    	SmartDashboard.putNumber("target", distance);
-    	Robot.drivetrain.resetAngle();
-    	
-    	
+    	SmartDashboard.putNumber("distance", encoder.getDistance());
+    	SmartDashboard.putNumber("target distance", distance);
+    	angle = Robot.drivetrain.getAngle();
+    	/*Robot.drivetrain.resetAngle();
+    	SmartDashboard.putNumber("drivetrain angle", Robot.drivetrain.getAngle());
+    	Timer.delay(1);
+    	SmartDashboard.putNumber("drivetrain angle", Robot.drivetrain.getAngle());
+    	Timer.delay(1);*/
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Robot.drivetrain.arcade(.65, -Robot.drivetrain.getAngle()*.08);
+    		Robot.drivetrain.arcade(1, (angle-Robot.drivetrain.getAngle())*.15);
     		SmartDashboard.putNumber("distance", encoder.getDistance());
+    		SmartDashboard.putNumber("drivetrain angle", Robot.drivetrain.getAngle());
     	
     }
 
