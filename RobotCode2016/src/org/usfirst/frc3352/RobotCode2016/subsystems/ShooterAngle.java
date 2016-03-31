@@ -32,7 +32,7 @@ public class ShooterAngle extends Subsystem {
     }
 
     public double getAngle(){
-    	return ((5-pot.getAverageVoltage())*54)-30;
+    	return ((5-pot.getAverageVoltage())*54)-0;//30 for practice bot
     }
 
     public void resetGyro(){
