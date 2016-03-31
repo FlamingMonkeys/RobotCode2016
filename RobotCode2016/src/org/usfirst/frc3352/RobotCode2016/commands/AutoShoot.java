@@ -7,31 +7,34 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AngleHold extends Command {
+public class AutoShoot extends Command {
+	
+	int i;
 
-    public AngleHold() {
+    public AutoShoot() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.shooterWheels.setWheelSpeed(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.shooter.setAngle(.15);
+    	i++;
+    	if(i==50) Robot.shooterpneumatics.push();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return i>100;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	//Robot.shooter.setAngle(0);
+    	Robot.shooterpneumatics.pull();
     }
 
     // Called when another command which requires one or more of the same

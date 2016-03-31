@@ -7,12 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class DriveAcrossDefense_Auto extends CommandGroup {
+public class MoveToAim extends CommandGroup {
     
-	public enum Defense {LOWBAR, MOAT, ROCKWALL, ROUGH, RAMPART, CHEVAL, PORTCULLIS, DRAWBRIDGE, SALLY}
-	double angle;
-	
-    public  DriveAcrossDefense_Auto(Defense defense) {
+    public  MoveToAim() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,18 +26,9 @@ public class DriveAcrossDefense_Auto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new ResetGyro());
-		if(defense == Defense.MOAT || defense ==  Defense.ROCKWALL || defense == Defense.ROUGH || defense == Defense.RAMPART || defense == Defense.CHEVAL){
-			angle = 95;
-		}else if(defense == Defense.LOWBAR){
-			angle = 15;
-		}
-		Robot.autoAltitude = angle;
-		//addParallel(new AnglePIDAuto(angle));
-		//addSequential(new DriveToDefense_Auto());
-		//addParallel(new AngleHold());
-		addParallel(new AnglePID());
-		addSequential(new DriveToPosition(25,0));
-		
+    	addSequential(new AimAtGoal(Robot.frame));
+//    	addParallel(new TurnToHeading(AimAtGoal.results[1]));
+    	addSequential(new AnglePID());
+//    	addSequential(new AutoShoot());
     }
 }

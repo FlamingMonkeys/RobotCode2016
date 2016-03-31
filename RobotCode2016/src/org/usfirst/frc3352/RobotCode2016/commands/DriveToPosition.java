@@ -33,19 +33,23 @@ public class DriveToPosition extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	encoder = Robot.drivetrain.rightEncoder;
+    	encoder = Robot.drivetrain.leftEncoder;
     	encoder.reset();
+    	SmartDashboard.putNumber("distance", encoder.getDistance());
     	SmartDashboard.putNumber("target distance", distance);
-    	Robot.drivetrain.resetAngle();
     	angle = Robot.drivetrain.getAngle();
-    	SmartDashboard.putNumber("target angle", angle);
+    	/*Robot.drivetrain.resetAngle();
+    	SmartDashboard.putNumber("drivetrain angle", Robot.drivetrain.getAngle());
+    	Timer.delay(1);
+    	SmartDashboard.putNumber("drivetrain angle", Robot.drivetrain.getAngle());
+    	Timer.delay(1);*/
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Robot.drivetrain.arcade(.65, -(Robot.drivetrain.getAngle()-angle)*.08);
+    		Robot.drivetrain.arcade(1, (angle-Robot.drivetrain.getAngle())*.15);
     		SmartDashboard.putNumber("distance", encoder.getDistance());
-    		SmartDashboard.putNumber("angle", Robot.drivetrain.getAngle());
+    		SmartDashboard.putNumber("drivetrain angle", Robot.drivetrain.getAngle());
     	
     }
 

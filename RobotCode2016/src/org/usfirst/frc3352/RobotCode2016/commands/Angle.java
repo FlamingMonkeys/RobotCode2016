@@ -56,13 +56,6 @@ public class Angle extends Command {
     		target = 0;//arm is at bottom position; do not go lower
     	}
     	
-    	//TODO test fast-start code
-    	if(target>0){
-    		Robot.shooter.setAngle(1);
-    	}else if(target<0){
-    		Robot.shooter.setAngle(-1);
-    	}
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -85,7 +78,7 @@ public class Angle extends Command {
     	if(target>0){
     		target = target * 1; //more power for up direction
     	}else{
-    		target = target * .3; //less power for down direction
+    		target = target * 1; //less power for down direction
     	}
     	
     	if(!Robot.oi.getOverride()){
@@ -96,18 +89,10 @@ public class Angle extends Command {
 	    	}*/
     	}
     	
-    	if(lastTarget==0 && target != 0){
-    		if(target > 0){
-    			target =  1;
-    		}else{
-    			target = -1;
-    		}
-    	}
-    	
     	
     	
     	SmartDashboard.putNumber("angle speed", target);
-    	Robot.shooter.setAngle(target);
+    	//Robot.shooter.setAngle(target);
     	lastTarget = target;
     	/*
     	double target = Robot.oi.getTarget(); //get target angle based on joystick position
@@ -124,7 +109,7 @@ public class Angle extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.setAngle(0);
+    	//Robot.shooter.setAngle(0);
     }
 
     // Called when another command which requires one or more of the same
